@@ -1,0 +1,530 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8703C91F1DA0A0120089C014 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C91E1DA0A0120089C014 /* main.m */; };
+		8703C9221DA0A0120089C014 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C9211DA0A0120089C014 /* AppDelegate.m */; };
+		8703C9251DA0A0120089C014 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C9241DA0A0120089C014 /* ViewController.m */; };
+		8703C9281DA0A0120089C014 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8703C9261DA0A0120089C014 /* Main.storyboard */; };
+		8703C92A1DA0A0120089C014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8703C9291DA0A0120089C014 /* Assets.xcassets */; };
+		8703C92D1DA0A0120089C014 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8703C92B1DA0A0120089C014 /* LaunchScreen.storyboard */; };
+		8703C9381DA0A0120089C014 /* FindTheCupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C9371DA0A0120089C014 /* FindTheCupTests.m */; };
+		8703C9431DA0A0130089C014 /* FindTheCupUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8703C9421DA0A0130089C014 /* FindTheCupUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8703C9341DA0A0120089C014 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8703C9121DA0A0120089C014 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8703C9191DA0A0120089C014;
+			remoteInfo = FindTheCup;
+		};
+		8703C93F1DA0A0130089C014 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8703C9121DA0A0120089C014 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8703C9191DA0A0120089C014;
+			remoteInfo = FindTheCup;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8703C91A1DA0A0120089C014 /* FindTheCup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindTheCup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8703C91E1DA0A0120089C014 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8703C9201DA0A0120089C014 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8703C9211DA0A0120089C014 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8703C9231DA0A0120089C014 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8703C9241DA0A0120089C014 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8703C9271DA0A0120089C014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8703C9291DA0A0120089C014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8703C92C1DA0A0120089C014 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8703C92E1DA0A0120089C014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8703C9331DA0A0120089C014 /* FindTheCupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindTheCupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8703C9371DA0A0120089C014 /* FindTheCupTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindTheCupTests.m; sourceTree = "<group>"; };
+		8703C9391DA0A0120089C014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8703C93E1DA0A0130089C014 /* FindTheCupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindTheCupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8703C9421DA0A0130089C014 /* FindTheCupUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindTheCupUITests.m; sourceTree = "<group>"; };
+		8703C9441DA0A0130089C014 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8703C9171DA0A0120089C014 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C9301DA0A0120089C014 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C93B1DA0A0130089C014 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8703C9111DA0A0120089C014 = {
+			isa = PBXGroup;
+			children = (
+				8703C91C1DA0A0120089C014 /* FindTheCup */,
+				8703C9361DA0A0120089C014 /* FindTheCupTests */,
+				8703C9411DA0A0130089C014 /* FindTheCupUITests */,
+				8703C91B1DA0A0120089C014 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8703C91B1DA0A0120089C014 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8703C91A1DA0A0120089C014 /* FindTheCup.app */,
+				8703C9331DA0A0120089C014 /* FindTheCupTests.xctest */,
+				8703C93E1DA0A0130089C014 /* FindTheCupUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8703C91C1DA0A0120089C014 /* FindTheCup */ = {
+			isa = PBXGroup;
+			children = (
+				8703C9201DA0A0120089C014 /* AppDelegate.h */,
+				8703C9211DA0A0120089C014 /* AppDelegate.m */,
+				8703C9231DA0A0120089C014 /* ViewController.h */,
+				8703C9241DA0A0120089C014 /* ViewController.m */,
+				8703C9261DA0A0120089C014 /* Main.storyboard */,
+				8703C9291DA0A0120089C014 /* Assets.xcassets */,
+				8703C92B1DA0A0120089C014 /* LaunchScreen.storyboard */,
+				8703C92E1DA0A0120089C014 /* Info.plist */,
+				8703C91D1DA0A0120089C014 /* Supporting Files */,
+			);
+			path = FindTheCup;
+			sourceTree = "<group>";
+		};
+		8703C91D1DA0A0120089C014 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8703C91E1DA0A0120089C014 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8703C9361DA0A0120089C014 /* FindTheCupTests */ = {
+			isa = PBXGroup;
+			children = (
+				8703C9371DA0A0120089C014 /* FindTheCupTests.m */,
+				8703C9391DA0A0120089C014 /* Info.plist */,
+			);
+			path = FindTheCupTests;
+			sourceTree = "<group>";
+		};
+		8703C9411DA0A0130089C014 /* FindTheCupUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8703C9421DA0A0130089C014 /* FindTheCupUITests.m */,
+				8703C9441DA0A0130089C014 /* Info.plist */,
+			);
+			path = FindTheCupUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8703C9191DA0A0120089C014 /* FindTheCup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8703C9471DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCup" */;
+			buildPhases = (
+				8703C9161DA0A0120089C014 /* Sources */,
+				8703C9171DA0A0120089C014 /* Frameworks */,
+				8703C9181DA0A0120089C014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FindTheCup;
+			productName = FindTheCup;
+			productReference = 8703C91A1DA0A0120089C014 /* FindTheCup.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8703C9321DA0A0120089C014 /* FindTheCupTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8703C94A1DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCupTests" */;
+			buildPhases = (
+				8703C92F1DA0A0120089C014 /* Sources */,
+				8703C9301DA0A0120089C014 /* Frameworks */,
+				8703C9311DA0A0120089C014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8703C9351DA0A0120089C014 /* PBXTargetDependency */,
+			);
+			name = FindTheCupTests;
+			productName = FindTheCupTests;
+			productReference = 8703C9331DA0A0120089C014 /* FindTheCupTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8703C93D1DA0A0130089C014 /* FindTheCupUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8703C94D1DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCupUITests" */;
+			buildPhases = (
+				8703C93A1DA0A0130089C014 /* Sources */,
+				8703C93B1DA0A0130089C014 /* Frameworks */,
+				8703C93C1DA0A0130089C014 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8703C9401DA0A0130089C014 /* PBXTargetDependency */,
+			);
+			name = FindTheCupUITests;
+			productName = FindTheCupUITests;
+			productReference = 8703C93E1DA0A0130089C014 /* FindTheCupUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8703C9121DA0A0120089C014 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Kota Kawanishi";
+				TargetAttributes = {
+					8703C9191DA0A0120089C014 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					8703C9321DA0A0120089C014 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8703C9191DA0A0120089C014;
+					};
+					8703C93D1DA0A0130089C014 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 8703C9191DA0A0120089C014;
+					};
+				};
+			};
+			buildConfigurationList = 8703C9151DA0A0120089C014 /* Build configuration list for PBXProject "FindTheCup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8703C9111DA0A0120089C014;
+			productRefGroup = 8703C91B1DA0A0120089C014 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8703C9191DA0A0120089C014 /* FindTheCup */,
+				8703C9321DA0A0120089C014 /* FindTheCupTests */,
+				8703C93D1DA0A0130089C014 /* FindTheCupUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8703C9181DA0A0120089C014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8703C92D1DA0A0120089C014 /* LaunchScreen.storyboard in Resources */,
+				8703C92A1DA0A0120089C014 /* Assets.xcassets in Resources */,
+				8703C9281DA0A0120089C014 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C9311DA0A0120089C014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C93C1DA0A0130089C014 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8703C9161DA0A0120089C014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8703C9251DA0A0120089C014 /* ViewController.m in Sources */,
+				8703C9221DA0A0120089C014 /* AppDelegate.m in Sources */,
+				8703C91F1DA0A0120089C014 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C92F1DA0A0120089C014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8703C9381DA0A0120089C014 /* FindTheCupTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8703C93A1DA0A0130089C014 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8703C9431DA0A0130089C014 /* FindTheCupUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8703C9351DA0A0120089C014 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8703C9191DA0A0120089C014 /* FindTheCup */;
+			targetProxy = 8703C9341DA0A0120089C014 /* PBXContainerItemProxy */;
+		};
+		8703C9401DA0A0130089C014 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8703C9191DA0A0120089C014 /* FindTheCup */;
+			targetProxy = 8703C93F1DA0A0130089C014 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8703C9261DA0A0120089C014 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8703C9271DA0A0120089C014 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8703C92B1DA0A0120089C014 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8703C92C1DA0A0120089C014 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8703C9451DA0A0130089C014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8703C9461DA0A0130089C014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8703C9481DA0A0130089C014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FindTheCup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCup;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8703C9491DA0A0130089C014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FindTheCup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCup;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8703C94B1DA0A0130089C014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FindTheCupTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCupTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindTheCup.app/FindTheCup";
+			};
+			name = Debug;
+		};
+		8703C94C1DA0A0130089C014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FindTheCupTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCupTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindTheCup.app/FindTheCup";
+			};
+			name = Release;
+		};
+		8703C94E1DA0A0130089C014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FindTheCupUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCupUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FindTheCup;
+			};
+			name = Debug;
+		};
+		8703C94F1DA0A0130089C014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FindTheCupUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotakawanishi.FindTheCupUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FindTheCup;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8703C9151DA0A0120089C014 /* Build configuration list for PBXProject "FindTheCup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8703C9451DA0A0130089C014 /* Debug */,
+				8703C9461DA0A0130089C014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8703C9471DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8703C9481DA0A0130089C014 /* Debug */,
+				8703C9491DA0A0130089C014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8703C94A1DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCupTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8703C94B1DA0A0130089C014 /* Debug */,
+				8703C94C1DA0A0130089C014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8703C94D1DA0A0130089C014 /* Build configuration list for PBXNativeTarget "FindTheCupUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8703C94E1DA0A0130089C014 /* Debug */,
+				8703C94F1DA0A0130089C014 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8703C9121DA0A0120089C014 /* Project object */;
+}
