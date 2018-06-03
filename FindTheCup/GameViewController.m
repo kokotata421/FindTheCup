@@ -457,7 +457,6 @@ static BOOL fromBackGround = NO;
 }
 
 - (void)shuffleWithoutBallCup1:(CupView*)cup1 Cup2:(CupView*)cup2{
-    __weak GameViewController* weakSelf = self;
         
     CALayer* theLayer1 = cup1.layer;
     CALayer* theLayer2 = cup2.layer;
@@ -488,7 +487,7 @@ static BOOL fromBackGround = NO;
     cup1Animation.fillMode = kCAFillModeForwards;
     cup1Animation.removedOnCompletion = NO;
     cup1Animation.duration = self.stage.speed;
-    cup1Animation.delegate = weakSelf;
+    cup1Animation.delegate = self;
     cup1Animation.path = curvedPath1;
     CGPathRelease(curvedPath1);
     
@@ -502,7 +501,7 @@ static BOOL fromBackGround = NO;
     cup2Animation.fillMode = kCAFillModeForwards;
     cup2Animation.removedOnCompletion = NO;
     cup2Animation.duration = self.stage.speed;
-    cup2Animation.delegate = weakSelf;
+    cup2Animation.delegate = self;
     cup2Animation.path = curvedPath2;
     CGPathRelease(curvedPath2);
     [self.delegate shuffleSound];
@@ -512,8 +511,6 @@ static BOOL fromBackGround = NO;
 }
 
 - (void)shuffleWithBallCup1:(CupView*)cup1 Cup2:(CupView*)cup2{
-    __weak GameViewController* weakSelf = self;
-    
     BallView *ballView1;
     BallView *ballView2;
     if(cup1.cup.ball){
@@ -559,7 +556,7 @@ static BOOL fromBackGround = NO;
                           cup1XPoint, cupYPoint,
                           cup1XPoint + shuffleDistance / 2.0 , cupYPoint + self.view.frame.size.height * 0.25,
                           cup2XPoint, cupYPoint);
-    cup1Animation.delegate = weakSelf;
+    cup1Animation.delegate = self;
     cup1Animation.path = curvedPath1;
     CGPathRelease(curvedPath1);
     
@@ -570,7 +567,7 @@ static BOOL fromBackGround = NO;
                           cup2XPoint, cupYPoint,
                           cup2XPoint + shuffleDistance / 2.0 , cupYPoint + self.view.frame.size.height * 0.25,
                           cup1XPoint, cupYPoint);
-    cup2Animation.delegate = weakSelf;
+    cup2Animation.delegate = self;
     cup2Animation.path = curvedPath2;
     CGPathRelease(curvedPath2);
     
@@ -749,7 +746,7 @@ static BOOL fromBackGround = NO;
 
 
 - (void)confirmSelectedCup{
-    __weak GameViewController* weakSelf = self;
+    __unsafe_unretained id _self = self;
     CupView *confirmCup;
     if(self.redCup.cup.position == confirmPosition)
         confirmCup = self.redCup;
@@ -768,7 +765,7 @@ static BOOL fromBackGround = NO;
     }completion:^(BOOL finished){
         if(finished)
 
-            [weakSelf confirmWholeCups:confirmCup];
+            [_self confirmWholeCups:confirmCup];
         
     }];
     
@@ -828,7 +825,6 @@ static BOOL fromBackGround = NO;
 }
 
 - (void)answerCountDown{
-    __weak GameViewController* weakSelf = self;
     [countDownImageView removeFromSuperview];
     if(countDown >= 0){
         CGSize countDownViewSize = CGSizeMake(self.view.frame.size.width * countNumberSizeScale, self.view.frame.size.width * countNumberSizeScale);
@@ -858,7 +854,7 @@ static BOOL fromBackGround = NO;
             }
             [countDownImageView removeFromSuperview];
             countDownImages = nil;
-            [weakSelf performSelector:@selector(confirmWholeCups:) withObject:nil afterDelay:1.0];
+            [self performSelector:@selector(confirmWholeCups:) withObject:nil afterDelay:1.0];
         }
     }
     

@@ -85,24 +85,22 @@ static CGSize referenceSize;
     }else{
         viewSetupDone = NO;
     }
-   // [self showBanner];
+    [self showBanner];
     [self performSelector:@selector(showInterstitial) withObject:nil afterDelay:0.5f];
 }
 
 
 - (void)adLoad{
-    __weak GameSelectViewController* weakSelf = self;
     GADRequest *request = [GADRequest request];
 
     self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-8719818866106636/3600284503"];
-    self.interstitial.delegate = weakSelf;
+    self.interstitial.delegate = self;
     [self.interstitial loadRequest:request];
 }
 
 - (void)showInterstitial{
-    __weak GameSelectViewController* weakSelf = self;
     if(arc4random_uniform(4) == 0 && [self.interstitial isReady]){
-        [self.interstitial presentFromRootViewController:weakSelf];
+        [self.interstitial presentFromRootViewController:self];
         
     }
 }
@@ -460,7 +458,6 @@ static CGSize referenceSize;
 
 
 - (void)showBanner{
-    __weak GameSelectViewController* weakSelf = self;
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
         
         self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape origin:CGPointMake(0, referenceSize.height)];
@@ -471,7 +468,7 @@ static CGSize referenceSize;
         
     }
     
-    self.bannerView.rootViewController = weakSelf;
+    self.bannerView.rootViewController = self;
     
     GADRequest *request = [GADRequest request];
     

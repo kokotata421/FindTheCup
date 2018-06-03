@@ -317,7 +317,6 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
 }
 
 - (void)showBanner{
-    __weak RankViewController* weakSelf = self;
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
         
         self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape origin:CGPointMake(0, referenceSize.height)];
@@ -328,7 +327,7 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
         
     }
     
-    self.bannerView.rootViewController = weakSelf;
+    self.bannerView.rootViewController = self;
     
     GADRequest *request = [GADRequest request];
     

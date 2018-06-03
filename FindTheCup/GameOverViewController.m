@@ -103,18 +103,17 @@ static int chip;
         self.interstitial = [self adLoad];
         [self resultSound];
         [self resultViewAnimation];
-       // [self showBanner];
+        [self showBanner];
     }
     resultProcedureDone = NO;
 }
 
 - (GADInterstitial *)adLoad{
-    __weak GameOverViewController* weakSelf = self;
     GADRequest *request = [GADRequest request];
     
 
     GADInterstitial* interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-8719818866106636/2123551300"];
-    interstitial.delegate = weakSelf;
+    interstitial.delegate = self;
     [interstitial loadRequest:request];
     
     return interstitial;
@@ -411,7 +410,6 @@ static int chip;
 }
 
 - (void)updateChipRecordOnRank:(NSString *)name{
-    __weak GameOverViewController* weakSelf = self;
     NCMBQuery *query = [NCMBQuery queryWithClassName:@"Rank"];
     [query whereKey:@"name" equalTo:name];
     
@@ -455,7 +453,7 @@ static int chip;
                 } else {
                     [self setUpBtn];
                     if(arc4random_uniform(3) == 0)
-                        [self.interstitial presentFromRootViewController:weakSelf];
+                        [self.interstitial presentFromRootViewController:self];
                 }
             }];
         }
@@ -492,9 +490,8 @@ static int chip;
         self.bannerView.adUnitID = @"ca-app-pub-8719818866106636/4878541307";
         
     }
-    __weak GameOverViewController* weakSelf = self;
     
-    self.bannerView.rootViewController = weakSelf;
+    self.bannerView.rootViewController = self;
     
     GADRequest *request = [GADRequest request];
     

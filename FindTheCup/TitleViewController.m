@@ -112,7 +112,7 @@ static int chip;
             
             [self showPresentChip];
         }
-        //[self showBanner];
+        [self showBanner];
     }
     needOfSetup = YES;
     
@@ -124,7 +124,7 @@ static int chip;
 
 - (void)adViewDidDismissScreen:(GADBannerView *)bannerView{
     [self.bannerView removeFromSuperview];
-    //[self showBanner];
+    [self showBanner];
 }
 
 
