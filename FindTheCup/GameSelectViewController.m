@@ -73,7 +73,7 @@ static CGSize referenceSize;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     levelStrings = [[NSArray alloc] initWithObjects: @"BEGINNER", @"INTERMEDIATE", @"ADVANCED", nil];
-    [self setUpGameLevelSelectView];
+    [self showGameLevelSelectView];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -81,7 +81,7 @@ static CGSize referenceSize;
     [self adLoad];
     [self.delegate playMainBGM];
     if(!viewSetupDone){
-       [self setLevelViews];
+       [self showLevelViews];
     }else{
         viewSetupDone = NO;
     }
@@ -120,7 +120,7 @@ static CGSize referenceSize;
 
 
 
-- (void)setUpGameLevelSelectView{
+- (void)showGameLevelSelectView{
     NSString* kGameLevelSelectView = @"GameLevelSelectView";
     NSString* kHomeBtnImage = @"HomeBtn";
     
@@ -144,7 +144,7 @@ static CGSize referenceSize;
     [self.view addSubview:homeBtn];
 }
 
-- (void)setLevelViews{
+- (void)showLevelViews{
     NSString* kLevelImage = @"Level";
     sizeScale levelSizeScale = {0.56, 0.318};
     
@@ -223,17 +223,17 @@ static CGSize referenceSize;
     
     [self.view addSubview:selectedLevelView];
     
-    if(![self checkSelectedLevelStageRecord:selectedLevel])
-        selectedLevelStageRecord = [self setUpStageRecord:selectedLevel];
+    if(![self selectedLevelStageRecordExits:selectedLevel])
+        selectedLevelStageRecord = [self createStageRecord:selectedLevel];
     
-    [self setUpInfoBtn];
-    [self checkClearStage];
-    [self setStageBtns];
-    [self setArrows];
+    [self configureInfoBtn];
+    [self clearStage];
+    [self configureStageBtns];
+    [self showArrows];
     [self showInterstitial];
 }
 
-- (void)setUpInfoBtn{
+- (void)configureInfoBtn{
     scale infoBtnScale = {0.942, 0.053, 0.03};
     
     infoBtn = [UIButton buttonWithType:UIButtonTypeInfoLight];
@@ -292,7 +292,7 @@ static CGSize referenceSize;
     [cancelBtn removeFromSuperview];
 }
 
-- (BOOL)checkSelectedLevelStageRecord:(level)level{
+- (BOOL)selectedLevelStageRecordExits:(level)level{
     ud = [NSUserDefaults standardUserDefaults];
     selectedLevelStageRecord = [[NSArray alloc] initWithArray:[ud objectForKey:levelStrings[level]]];
     if([selectedLevelStageRecord lastObject] != nil)
@@ -301,7 +301,7 @@ static CGSize referenceSize;
         return NO;
 }
 
-- (id)setUpStageRecord:(level)level{
+- (id)createStageRecord:(level)level{
     NSArray *stageRecord = [[NSArray alloc] initWithObjects: @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO),@(NO), @(NO) ,@(NO), @(NO), @(NO) ,@(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), @(NO), nil];
     ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:stageRecord forKey:levelStrings[level]];
@@ -309,7 +309,7 @@ static CGSize referenceSize;
     return stageRecord;
 }
 
-- (void)setStageBtns{
+- (void)configureStageBtns{
     float stageLineWidthScale = 0.65;
     
     float stageLineWidth = referenceSize.width * stageLineWidthScale;
@@ -357,7 +357,7 @@ static CGSize referenceSize;
         [stageBtn addTarget:self action:@selector(selectStage:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:stageBtn];
     }
-    [self setStageViews];
+    [self configureStageViews];
 }
 
 - (void)selectStage:(StageButton *)btn{
@@ -372,7 +372,7 @@ static CGSize referenceSize;
     
 }
 
-- (void)checkClearStage{
+- (void)clearStage{
     accessibleStage = 2;
     do{
         if((BOOL)[selectedLevelStageRecord[accessibleStage] boolValue] == YES)
@@ -382,7 +382,7 @@ static CGSize referenceSize;
     }while(accessibleStage < 24);
 }
 
-- (void)setStageViews{
+- (void)configureStageViews{
     for(int i = 0; i < 8; i++){
         StageButton* btn = stageBtns[i];
         if(accessibleStage >= btn.stage){
@@ -397,23 +397,23 @@ static CGSize referenceSize;
         }
     }
 }
-- (void)setArrows{
+- (void)showArrows{
     [nextArrow removeFromSuperview];
     [backArrow removeFromSuperview];
     switch(pageNumber){
-        case 1: [self setNextArrow]; break;
-        case 2: [self setBothArrows]; break;
-        case 3: [self setBackArrow]; break;
+        case 1: [self showNextArrow]; break;
+        case 2: [self showBothArrows]; break;
+        case 3: [self showBackArrow]; break;
         default: break;
     }
 }
 
-- (void)setBothArrows{
-    [self setBackArrow];
-    [self setNextArrow];
+- (void)showBothArrows{
+    [self showBackArrow];
+    [self showNextArrow];
 }
 
-- (void)setNextArrow{
+- (void)showNextArrow{
     if(!nextArrow){
         nextArrow = [[UIButton alloc] initWithFrame:CGRectMake(referenceSize.width - referenceSize.width * arrowWidthScale, referenceSize.height * arrowYScale, referenceSize.width * arrowWidthScale, referenceSize.height * arrowHeigthtScale)];
         [nextArrow setImage:[UIImage imageNamed:kNextArrowImage] forState:UIControlStateNormal];
@@ -423,7 +423,7 @@ static CGSize referenceSize;
     [self.view addSubview:nextArrow];
 }
 
-- (void)setBackArrow{
+- (void)showBackArrow{
     if(!backArrow){
         backArrow = [[UIButton alloc] initWithFrame:CGRectMake(0, referenceSize.height * arrowYScale, referenceSize.width * arrowWidthScale, referenceSize.height * arrowHeigthtScale)];
         [backArrow setImage:[UIImage imageNamed:kBackArrowImage] forState:UIControlStateNormal];
@@ -437,16 +437,16 @@ static CGSize referenceSize;
     [self.delegate touchBtnSound];
     pageNumber++;
     [self removeStageBtnViews];
-    [self setStageBtns];
-    [self setArrows];
+    [self configureStageBtns];
+    [self showArrows];
 }
 
 - (void)goBack{
     [self.delegate touchBtnSound];
     pageNumber--;
     [self removeStageBtnViews];
-    [self setStageBtns];
-    [self setArrows];
+    [self configureStageBtns];
+    [self showArrows];
 }
 
 - (void)removeStageBtnViews{
