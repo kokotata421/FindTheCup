@@ -91,10 +91,10 @@ static int chip;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setUpTitleView];
+    [self configureTitleView];
     if(referenceSize.width)
-        [self setUpBtn];
-    [self setUpExplanation];
+        [self showBtn];
+    [self prepareExplanation];
     [GADMobileAds initialize];
 }
 
@@ -103,9 +103,9 @@ static int chip;
     self.delegate = (ViewController *)self.parentViewController;
     [self.delegate playTitleBGM];
     if(needOfSetup){
-        [self setSoundBtnImage];
+        [self configureSoundBtnImage];
         
-        if(![self checkPlayerName]){
+        if(![self hasPlayerName]){
             [self showAlertController];
         }
         else{
@@ -164,7 +164,7 @@ static int chip;
 }
 
 
-- (void)setUpTitleView{
+- (void)configureTitleView{
     NSString* kTitleView = @"FindTheCupTitleView";
     
     self.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kTitleView]];
@@ -178,7 +178,7 @@ static int chip;
     
 }
 
-- (void)setUpBtn{
+- (void)showBtn{
     NSString* kPlayBtnImage = @"PlayBtn";
     NSString* kHowToPlayBtnImage = @"HowToPlayBtn";
     NSString* kRankBtnImage = @"RankBtn";
@@ -214,7 +214,7 @@ static int chip;
     
 }
 
-- (void)setSoundBtnImage{
+- (void)configureSoundBtnImage{
     NSString* kSoundOnImage = @"SoundOn";
     NSString* kSoundOffImage = @"SoundOff";
     ViewController *parentCtr = (ViewController *)self.parentViewController;
@@ -230,17 +230,17 @@ static int chip;
     ViewController *parentCtr = (ViewController *)self.parentViewController;
     [parentCtr setSoundOn:![parentCtr getSoundOn]];
     if([parentCtr getSoundOn]){
-        [self setSoundBtnImage];
+        [self configureSoundBtnImage];
         [self.delegate playTitleBGM];
     } else{
-        [self setSoundBtnImage];
+        [self configureSoundBtnImage];
         [self.delegate stopBGM];
     }
 }
 
 
 
-- (void)setUpExplanation{
+- (void)prepareExplanation{
     NSString* kBackBtnImage = @"BackBtn";
     NSString* kNextArrowImage = @"NextArrow";
     NSString* kBackArrowImage = @"BackArrow";
@@ -309,7 +309,7 @@ static int chip;
     [self.view addSubview:self.presentExplanationView];
     [self.presentExplanationView addSubview:self.backBtn];
     [self.presentExplanationView addSubview:self.presentPageNumberView];
-    [self setArrow];
+    [self showArrow];
 }
 
 - (void)nextPage{
@@ -322,7 +322,7 @@ static int chip;
     
     [self.presentExplanationView addSubview:self.backBtn];
     [self.presentExplanationView addSubview:self.presentPageNumberView];
-    [self setArrow];
+    [self showArrow];
 }
 
 
@@ -336,30 +336,30 @@ static int chip;
     self.presentPageNumberView.image = [UIImage imageNamed:[[NSString alloc] initWithFormat:@"PageNumber%d", presentExplanationPage]];
     [self.presentExplanationView addSubview:self.backBtn];
     [self.presentExplanationView addSubview:self.presentPageNumberView];
-    [self setArrow];
+    [self showArrow];
 }
 
-- (void)setArrow{
+- (void)showArrow{
     [self.nextArrowBtn removeFromSuperview];
     [self.backArrowBtn removeFromSuperview];
     switch(presentExplanationPage){
-        case 1: [self setNextArrow]; break;
-        case 2: [self setBothArrows]; break;
-        case 3: [self setBackArrow]; break;
+        case 1: [self showNextArrow]; break;
+        case 2: [self showBothArrows]; break;
+        case 3: [self showBackArrow]; break;
         default: break;
     }
 }
 
-- (void)setBothArrows{
-    [self setBackArrow];
-    [self setNextArrow];
+- (void)showBothArrows{
+    [self showBackArrow];
+    [self showNextArrow];
 }
 
-- (void)setNextArrow{
+- (void)showNextArrow{
     [self.view addSubview:self.nextArrowBtn];
 }
 
-- (void)setBackArrow{
+- (void)showBackArrow{
     [self.view addSubview:self.backArrowBtn];
 }
 
@@ -378,7 +378,7 @@ static int chip;
 }
 
 
-- (BOOL)checkPlayerName{
+- (BOOL)hasPlayerName{
     
     ud = [NSUserDefaults standardUserDefaults];
     self.playerName = [ud objectForKey:@"Name"];
@@ -424,7 +424,7 @@ static int chip;
         return YES;
     }
     
-    if([self checkIfNameAlreadyExists:text]){
+    if([self nameAlreadyExists:text]){
         NSString* alertTitle = NSLocalizedString(kAlertNameIsAlreadyRegistered, @"");
         NSString* alertMessage = NSLocalizedString(kAlertNameIsAlreadyRegisteredMessage, @"");
         UIAlertController* alertController = [UIAlertController alertControllerWithTitle:alertTitle message:alertMessage preferredStyle:UIAlertControllerStyleAlert];
@@ -446,7 +446,7 @@ static int chip;
     return YES;
 }
 
-- (BOOL)checkIfNameAlreadyExists:(NSString*)text{
+- (BOOL)nameAlreadyExists:(NSString*)text{
     
     NCMBQuery *query = [NCMBQuery queryWithClassName:@"Rank"];
     NSError *error;
@@ -520,7 +520,7 @@ static int chip;
     [self.view addSubview:self.yourChipView];
     [self removeChipNumberView];
     [self addChipNumberView];
-    [self checkIfAddingChip];
+    [self canAddChip];
 }
 
 
@@ -550,7 +550,7 @@ static int chip;
 
 
 
-- (void)checkIfAddingChip{
+- (void)canAddChip{
     if(chip >= defaultChipCount){
         for(UIView *n in self.countDownFrame.subviews){
             [n removeFromSuperview];
@@ -565,7 +565,7 @@ static int chip;
         float tmp = [now timeIntervalSinceDate:lastTime];
         int addingChipCount = (int)tmp / (60 * 15);
         if(addingChipCount){
-            [self addingChip:addingChipCount];
+            [self addChip:addingChipCount];
             if(chip >= defaultChipCount){
                 [self.chipAdBtn removeFromSuperview];
                 for(UIView *n in self.countDownFrame.subviews){
@@ -582,7 +582,7 @@ static int chip;
         if(chip < defaultChipCount){
             self.count = (60 * 15) - ((int)tmp % (60 * 15));
             if(!showingAdExView){
-                [self setupRewardedAd];
+                [self configureRewardedAd];
                 [self.view addSubview:self.chipAdBtn];
             }
             for(UIView *n in self.countDownFrame.subviews){
@@ -629,13 +629,13 @@ static int chip;
     [self showCount:min sec:sec];
     
     if(self.count < 1){
-        [self addingChip:1];
+        [self addChip:1];
         [self removeChipNumberView];
         [self addChipNumberView];
     }
 }
 
-- (void)addingChip:(int)number{
+- (void)addChip:(int)number{
     
     chip += number;
     if(chip > 5)
@@ -755,11 +755,11 @@ static int chip;
 }
 
 
-- (void)setupRewardedAd{
+- (void)configureRewardedAd{
     __weak TitleViewController *weakSelf = self;
     [[GADRewardBasedVideoAd sharedInstance] setDelegate:weakSelf];
     [self loadRewardAd];
-    [self setupRewardedAdViews];
+    [self configureRewardedAdViews];
 }
 
 - (void)loadRewardAd{
@@ -778,7 +778,7 @@ static int chip;
     [self.resumeAdBtn setImage:[UIImage imageNamed:btn] forState:UIControlStateNormal];
 }
 
-- (void)setupRewardedAdViews{
+- (void)configureRewardedAdViews{
     float adCancelBtnSizeScale = 0.25;
     float adExplanationSizeScaleToWidth = 0.4166;
     sizeScale adExplanationBtnSizeScaleToAdView = {0.7173, 0.145};
@@ -790,7 +790,7 @@ static int chip;
     NSString* kLoadingAd = @"LoadingAd";
     NSString *btn = NSLocalizedString(kLoadingAd, @"");
     
-    [self setupAdCount];
+    [self configureAdCount];
     if(self.chipAdBtn == nil){
         float chipBtnSize = referenceSize.width * squareBtnSizeScale;
         self.chipAdBtn = [[UIButton alloc] initWithFrame:CGRectMake(referenceSize.width - chipBtnSize - (referenceSize.width * intervalScaleOfSquareBtnToWidth), referenceSize.height - chipBtnSize - (referenceSize.height * intervalScaleOfSquareBtnToWidth), chipBtnSize, chipBtnSize)];
@@ -816,7 +816,7 @@ static int chip;
     
 }
 
-- (void)setupAdCount{
+- (void)configureAdCount{
     ud = [NSUserDefaults standardUserDefaults];
     if([ud objectForKey:@"AdCount"] == nil){
         adCount = 3;
@@ -848,7 +848,7 @@ static int chip;
     [self.adExplanationView removeFromSuperview];
     
     if(gotChipByAd && chip < defaultChipCount){
-        [self setupRewardedAdViews];
+        [self configureRewardedAdViews];
         [self loadRewardAd];
         gotChipByAd = NO;
     }
@@ -911,7 +911,7 @@ static int chip;
 }
 
 - (void)enterFromBackground{
-    [self checkIfAddingChip];
+    [self canAddChip];
 }
 
 - (void)enterBackground{
@@ -940,7 +940,7 @@ static int chip;
         NSString* kCloseAdBtnImage = @"CloseAdExplanationBtn";
         NSString *btn = NSLocalizedString(kCloseAdBtnImage, @"");
         
-        [self addingChip:1];
+        [self addChip:1];
         [self removeChipNumberView];
         [self addChipNumberView];
         adCount = 3;
