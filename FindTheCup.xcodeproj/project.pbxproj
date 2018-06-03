@@ -549,6 +549,7 @@
 				8703CAB31DA0CF5E0089C014 /* RankCellView.m */,
 				8703CAB41DA0CF5E0089C014 /* Check.h */,
 				8703CAB51DA0CF5E0089C014 /* Check.m */,
+				87ACFFF020C4350F00BD09EF /* Sound */,
 				8703C9261DA0A0120089C014 /* Main.storyboard */,
 				8703C9291DA0A0120089C014 /* Assets.xcassets */,
 				8703C92B1DA0A0120089C014 /* LaunchScreen.storyboard */,
@@ -563,21 +564,6 @@
 			children = (
 				87AAC3541DA1166100679A69 /* Localizable.strings */,
 				8703C91E1DA0A0120089C014 /* main.m */,
-				8703CACA1DA0D6800089C014 /* findTheCupTitleBGM.mp3 */,
-				8703CACB1DA0D6800089C014 /* findTheCupMainBGM.mp3 */,
-				8703CACC1DA0D6800089C014 /* button05.mp3 */,
-				8703CACD1DA0D6800089C014 /* decision3.mp3 */,
-				8703CACE1DA0D6800089C014 /* chipUp.mp3 */,
-				8703CACF1DA0D6800089C014 /* coinup.wav */,
-				8703CAD01DA0D6800089C014 /* shuffleCup.wav */,
-				8703CAD11DA0D6800089C014 /* chipDown.mp3 */,
-				8703CAD21DA0D6800089C014 /* lostSound.mp3 */,
-				8703CAD31DA0D6800089C014 /* wonSound.mp3 */,
-				8703CAD41DA0D6800089C014 /* countDown.wav */,
-				8703CAD51DA0D6800089C014 /* timeUp.mp3 */,
-				8703CAD61DA0D6800089C014 /* selectCup.mp3 */,
-				8703CAD71DA0D6800089C014 /* answerWrong.mp3 */,
-				8703CAD81DA0D6800089C014 /* cancel1.mp3 */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -959,6 +945,28 @@
 				8703CA901DA0B69C0089C014 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		87ACFFF020C4350F00BD09EF /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				8703CACA1DA0D6800089C014 /* findTheCupTitleBGM.mp3 */,
+				8703CACB1DA0D6800089C014 /* findTheCupMainBGM.mp3 */,
+				8703CACC1DA0D6800089C014 /* button05.mp3 */,
+				8703CACD1DA0D6800089C014 /* decision3.mp3 */,
+				8703CACE1DA0D6800089C014 /* chipUp.mp3 */,
+				8703CACF1DA0D6800089C014 /* coinup.wav */,
+				8703CAD01DA0D6800089C014 /* shuffleCup.wav */,
+				8703CAD11DA0D6800089C014 /* chipDown.mp3 */,
+				8703CAD21DA0D6800089C014 /* lostSound.mp3 */,
+				8703CAD31DA0D6800089C014 /* wonSound.mp3 */,
+				8703CAD41DA0D6800089C014 /* countDown.wav */,
+				8703CAD51DA0D6800089C014 /* timeUp.mp3 */,
+				8703CAD61DA0D6800089C014 /* selectCup.mp3 */,
+				8703CAD71DA0D6800089C014 /* answerWrong.mp3 */,
+				8703CAD81DA0D6800089C014 /* cancel1.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
