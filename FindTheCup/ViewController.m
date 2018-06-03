@@ -35,14 +35,13 @@ static BOOL soundOn = YES;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    __weak ViewController *weakSelf = self;
     self.view.userInteractionEnabled = YES;
     titleViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TitleViewCtr"];
     gameSelectViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameSelectViewCtr"];
     gameViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameViewCtr"];
     gameOverViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"GameOverViewCtr"];
     rankViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"RankViewCtr"];
-    self.audioPlayer.delegate = weakSelf;
+    self.audioPlayer.delegate = self;
     [ALSdk initializeSdk];
     [self displayContentController:titleViewController];
    
@@ -134,24 +133,18 @@ static BOOL soundOn = YES;
 }
 
 
-- (void)displayContentController:(UIViewController *)content
-{
+- (void)displayContentController:(UIViewController *)content{
     [self addChildViewController:content];
-    
     [self.view addSubview:content.view];
     
     [content didMoveToParentViewController:self];
 }
 
 
-- (void)hideContentController:(UIViewController *)content
-{
+- (void)hideContentController:(UIViewController *)content{
     
     [content willMoveToParentViewController:nil];
-    
     [content.view removeFromSuperview];
-    
-    
     [content removeFromParentViewController];
 }
 
