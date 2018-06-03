@@ -130,7 +130,6 @@ static int chip;
 
 
 - (void)showAlertController{
-    __weak TitleViewController *weakSelf = self;
     
     NSString *title = NSLocalizedString(kTextViewTitle, @"");
     NSString *message = NSLocalizedString(kTextViewMessage, @"");
@@ -151,7 +150,7 @@ static int chip;
         textField.placeholder = placeHolder;
         textField.keyboardType = UIKeyboardTypeASCIICapable;
         textField.returnKeyType = UIReturnKeySend;
-        textField.delegate = weakSelf;
+        textField.delegate = self;
         [textField addTarget:self action:@selector(textFieldEditingChanged:) forControlEvents:UIControlEventEditingChanged];
         
     }];
@@ -756,8 +755,7 @@ static int chip;
 
 
 - (void)configureRewardedAd{
-    __weak TitleViewController *weakSelf = self;
-    [[GADRewardBasedVideoAd sharedInstance] setDelegate:weakSelf];
+    [[GADRewardBasedVideoAd sharedInstance] setDelegate:self];
     [self loadRewardAd];
     [self configureRewardedAdViews];
 }
@@ -895,9 +893,8 @@ static int chip;
         self.bannerView.adUnitID = @"ca-app-pub-8719818866106636/5008471306";
         
     }
-    __weak TitleViewController* weakSelf = self;
     
-    self.bannerView.rootViewController = weakSelf;
+    self.bannerView.rootViewController = self;
     
     GADRequest *request = [GADRequest request];
     

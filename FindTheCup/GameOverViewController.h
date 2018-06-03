@@ -26,7 +26,7 @@
 @property (strong, nonatomic) GADBannerView *bannerView;
 @property (strong, nonatomic) GADInterstitial * interstitial;
 
-- (void)gameOverViewSetUp;
+- (void)configureGameOverView;
 - (void)setResult:(BOOL)Result;
 - (int)getChip;
 - (void)removeViews;

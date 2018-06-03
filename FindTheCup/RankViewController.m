@@ -69,12 +69,12 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
 
 - (void)viewDidAppear:(BOOL)animated{
     self.delegate = (ViewController *)self.parentViewController;
-    [self setUpRankView];
+    [self configureRankView];
     [self loadTop50Rank];
     [self showBanner];
 }
 
-- (BOOL)setUpRankView{
+- (BOOL)configureRankView{
     self.rankView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:rankViewImage]];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
         self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 50.0)];
@@ -222,7 +222,7 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
     [SVProgressHUD showWithStatus:@"loading"];
     
     if(!playerRankPosition)
-        [self getRankOfPlayer];
+        [self fetchRankOfPlayer];
     
     NCMBQuery *query = [NCMBQuery queryWithClassName:@"Rank"];
     
@@ -260,7 +260,7 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
                 rankArray = objects;
             }
             if(playerRankPosition - 50 > 0)
-                selectedRank = playerRankPosition - [self getSelectedRankInArray];
+                selectedRank = playerRankPosition - [self loadSelectedRankInArray];
             else
                 selectedRank = 1;
             [self uploadRankView:rankArray.count];
@@ -272,7 +272,7 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
 }
 
 
-- (int)getSelectedRankInArray{
+- (int)loadSelectedRankInArray{
     int i = 0;
     for(; i < rankArray.count ; i++){
         NCMBObject *object = rankArray[i];
@@ -282,7 +282,7 @@ static NSString* kErrorTitle = @"Can't currently get access to rank";
     return i;
 }
 
-- (void)getRankOfPlayer{
+- (void)fetchRankOfPlayer{
     NCMBQuery *query = [NCMBQuery queryWithClassName:@"Rank"];
     
     [query addDescendingOrder:@"chip"];

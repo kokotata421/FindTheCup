@@ -32,7 +32,7 @@
 @property (strong, nonatomic) GADBannerView *bannerView;
 
 
-- (BOOL)checkPlayerName;
+- (BOOL)hasPlayerName;
 - (void)setNeedOfSetup:(BOOL)Yes;
 - (void)setChip:(int)newChip;
 - (int)getChip;

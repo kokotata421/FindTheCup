@@ -116,15 +116,15 @@ static BOOL fromBackGround = NO;
     [nc addObserver:self selector:@selector(enterBackground) name:@"enterBackground" object:nil];
     fromBackGround = NO;
     [self.delegate playMainBGM];
-    [self setUpPositionOccupationInfomation];
-    [self setUpGameView];
-    [self setRing];
-    [self setCup];
-    [self setBall];
+    [self configurePositionOccupationInfomation];
+    [self showGameViews];
+    [self showRing];
+    [self showCup];
+    [self showBall];
     [self setTapBtn];
 }
 
-- (void)setUpPositionOccupationInfomation{
+- (void)configurePositionOccupationInfomation{
     for(int i = 0; i < self.stage.level + 3; i++){
         ballPositionOccupation[i] = NO;
         ballColorOccupation[i] = NO;
@@ -138,7 +138,7 @@ static BOOL fromBackGround = NO;
 
 
 
-- (void)setUpGameView{
+- (void)showGameViews{
     NSArray *numbersOnStageBoard = [NSArray arrayWithObjects:[UIImage imageNamed:kNumberOnBoard_0Image], [UIImage imageNamed:kNumberOnBoard_1Image], [UIImage imageNamed:kNumberOnBoard_2Image], [UIImage imageNamed:kNumberOnBoard_3Image], [UIImage imageNamed:kNumberOnBoard_4Image], [UIImage imageNamed:kNumberOnBoard_5Image], [UIImage imageNamed:kNumberOnBoard_6Image], [UIImage imageNamed:kNumberOnBoard_7Image], [UIImage imageNamed:kNumberOnBoard_8Image], [UIImage imageNamed:kNumberOnBoard_9Image],nil];
 
     
@@ -186,7 +186,7 @@ static BOOL fromBackGround = NO;
     betViewArray = [NSArray arrayWithArray:mutableBetViewArray];
 }
 
-- (void)setRing{
+- (void)showRing{
     CGSize ringSize = CGSizeMake(self.view.frame.size.width * ringWidthScale, self.view.frame.size.height * ringHeightScale);
     switch (self.stage.level) {
         case 0:
@@ -217,7 +217,7 @@ static BOOL fromBackGround = NO;
     
 }
 
-- (void)setCup{
+- (void)showCup{
     for(int i = 0; i < self.stage.level + 3; i++){
         int p;
         while(1){
@@ -252,7 +252,7 @@ static BOOL fromBackGround = NO;
     }
 }
 
-- (void)setBall{
+- (void)showBall{
     
     for(int i = 0; i < self.stage.numberOfBall; i++){
         int p;
@@ -298,12 +298,12 @@ static BOOL fromBackGround = NO;
 }
 
 - (void)linkCupWithBall:(BallView *)ballView{
-    Cup *cup = [self getCupFromPosition:ballView.ball.position];
+    Cup *cup = [self fetchCupFromPosition:ballView.ball.position];
     cup.ball = ballView.ball;
     
 }
 
-- (Cup *)getCupFromPosition:(int)position{
+- (Cup *)fetchCupFromPosition:(int)position{
     if(self.redCup.cup.position == position)
         return self.redCup.cup;
     else if(self.blueCup.cup.position == position)
@@ -316,7 +316,7 @@ static BOOL fromBackGround = NO;
         return self.yellowCup.cup;
 }
 
-- (CupView *)getCupViewfromColor:(color)color{
+- (CupView *)fetchCupViewfromColor:(color)color{
 
     switch (color) {
         case RED: return self.redCup;
@@ -444,8 +444,8 @@ static BOOL fromBackGround = NO;
         n2 = arc4random_uniform(self.stage.level + 3);
     }while(n == n2 || ((shuffleCup1.cup.color == n || shuffleCup2.cup.color == n) && (shuffleCup1.cup.color == n2 || shuffleCup2.cup.color == n2)));
     
-    shuffleCup1 = [self getCupViewfromColor:n];
-    shuffleCup2 = [self getCupViewfromColor:n2];
+    shuffleCup1 = [self fetchCupViewfromColor:n];
+    shuffleCup2 = [self fetchCupViewfromColor:n2];
 
     if(times < 3){
         [self shuffleWithBallCup1:shuffleCup1 Cup2:shuffleCup2];
@@ -514,12 +514,12 @@ static BOOL fromBackGround = NO;
     BallView *ballView1;
     BallView *ballView2;
     if(cup1.cup.ball){
-        ballView1 = [self getBallViewFromColor:cup1.cup.ball.color];
+        ballView1 = [self fetchBallViewFromColor:cup1.cup.ball.color];
         [ballView1 removeFromSuperview];
     }
     
     if(cup2.cup.ball){
-        ballView2 = [self getBallViewFromColor:cup2.cup.ball.color];
+        ballView2 = [self fetchBallViewFromColor:cup2.cup.ball.color];
         [ballView2 removeFromSuperview];
     }
     
@@ -604,7 +604,7 @@ static BOOL fromBackGround = NO;
             BallView *ballView1;
             BallView *ballView2;
             if(shuffleCup1.cup.ball){
-                ballView1 = [self getBallViewFromColor:shuffleCup1.cup.ball.color];
+                ballView1 = [self fetchBallViewFromColor:shuffleCup1.cup.ball.color];
                 ballView1.ball.position = shuffleCup1.cup.position;
                 CGRect ballFrame = [self getBallRectFromPosition:shuffleCup1.cup.position];
                 ballView1.frame = ballFrame;
@@ -612,7 +612,7 @@ static BOOL fromBackGround = NO;
             }
             
             if(shuffleCup2.cup.ball){
-                ballView2 = [self getBallViewFromColor:shuffleCup2.cup.ball.color];
+                ballView2 = [self fetchBallViewFromColor:shuffleCup2.cup.ball.color];
                 ballView2.ball.position = shuffleCup2.cup.position;
                 CGRect ballFrame = [self getBallRectFromPosition:shuffleCup2.cup.position];
                 ballView2.frame = ballFrame;
@@ -657,7 +657,7 @@ static BOOL fromBackGround = NO;
     int c;
     do {
         c = arc4random_uniform(self.stage.level + 3);
-    }while([self getBallViewFromColor:c] == nil);
+    }while([self fetchBallViewFromColor:c] == nil);
     
     switch (c) {
         case RED:question = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kWhereIsRedBallImage]];
@@ -685,7 +685,7 @@ static BOOL fromBackGround = NO;
 
 
 
-- (BallView*)getBallViewFromColor:(color)color{
+- (BallView*)fetchBallViewFromColor:(color)color{
     switch (color) {
         case RED: return self.redBall;
         case BLUE: return self.blueBall;
@@ -784,13 +784,13 @@ static BOOL fromBackGround = NO;
         if(self.yellowCup != confirmedCup)
             self.yellowCup.frame = CGRectMake(self.yellowCup.frame.origin.x, self.yellowCup.frame.origin.y - self.view.frame.size.height * liftUpCupScale, self.yellowCup.frame.size.width, self.yellowCup.frame.size.height);
     }completion:^(BOOL finished){
-        result = [self checkAnswer];
+        result = [self isCorrectAnswer];
         
         [self performSelector:@selector(gameOver) withObject:nil afterDelay:1.0];
     }];
 }
 
-- (BOOL)checkAnswer{
+- (BOOL)isCorrectAnswer{
     return (correctAnswer == answer)? YES : NO;
 }
 

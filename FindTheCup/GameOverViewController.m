@@ -83,7 +83,7 @@ static int chip;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self gameOverViewSetUp];
+    [self configureGameOverView];
     referenceSize = _gameOverView.frame.size;
     levelStrings = [[NSArray alloc] initWithObjects: @"BEGINNER", @"INTERMEDIATE", @"ADVANCED", nil];
 }
@@ -97,8 +97,8 @@ static int chip;
         resultViewSize = CGSizeMake(referenceSize.width * resultViewScale.width, referenceSize.height * resultViewScale.height);
         self.resultView.frame = CGRectMake(referenceSize.width / 2.0 - resultViewSize.width / 2.0,0.0 - resultViewSize.height * 2.0, resultViewSize.width, resultViewSize.height);
         [self.view addSubview:self.resultView];
-        [self chipViewSetUp];
-        [self setUpChip];
+        [self showChipView];
+        [self loadChip];
         [self updateStageRecord];
         self.interstitial = [self adLoad];
         [self resultSound];
@@ -144,13 +144,13 @@ static int chip;
         [self.delegate lostSound];
 }
 
-- (void)setUpChip{
+- (void)loadChip{
     ud = [NSUserDefaults standardUserDefaults];
     NSNumber *chipNumber = [ud objectForKey:@"Chip"];
     chip = [chipNumber intValue];
 }
 
-- (void)gameOverViewSetUp{
+- (void)configureGameOverView{
     
     self.gameOverView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kGameOverViewImage]];
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
@@ -162,7 +162,7 @@ static int chip;
 
 
 
-- (void)setUpBtn{
+- (void)showBtns{
     CGSize btnSize = CGSizeMake(referenceSize.width * btnSizeScale.width, referenceSize.height * btnSizeScale.height);
     self.retryBtn = [[UIButton alloc] initWithFrame:CGRectMake(referenceSize.width / 2.0 - btnSize.width / 2.0, referenceSize.height * retryBtnYScale, btnSize.width, btnSize.height)];
     [self.retryBtn setImage:[UIImage imageNamed:(self.result) ? kNextBtnImage : kRetryBtnImage] forState:UIControlStateNormal];
@@ -211,7 +211,7 @@ static int chip;
     
 }
 
-- (void)chipViewSetUp{
+- (void)showChipView{
     self.chipView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:(self.result) ? @"WonChip" : @"LostChip"]];
     CGSize chipSize = CGSizeMake(referenceSize.width * chipSizeToWidth, referenceSize.width * chipSizeToWidth);
     self.chipView.frame = CGRectMake(referenceSize.width / 2.0 - chipSize.width / 2.0, referenceSize.height * chipYScale, chipSize.width, chipSize.height);
@@ -236,7 +236,7 @@ static int chip;
 
 
 - (void)updateChipNumber:(BOOL)result{
-    [self setChipNumberView:chip];
+    [self configureChipNumberView:chip];
     if(result){
         chipCount = self.stage.paysOff;
         float interval;
@@ -267,7 +267,7 @@ static int chip;
         [self.delegate chipDownSound];
     }
     chipCount--;
-    [self setChipNumberView:chip];
+    [self configureChipNumberView:chip];
     if(chipCount < 1){
         [tm invalidate];
         [self updateChipRecord];
@@ -276,20 +276,20 @@ static int chip;
 
 
 
-- (void)setChipNumberView:(int)chip{
+- (void)configureChipNumberView:(int)chip{
     if(chip >= 10000)
-        [self setChipViewOfFiveDigit:chip];
+        [self showChipViewOfFiveDigit:chip];
     else if(chip >= 1000)
-        [self setChipViewOfFourDigit:chip];
+        [self showChipViewOfFourDigit:chip];
     else if(chip >= 100)
-        [self setChipViewOfThreeDigit:chip];
+        [self showChipViewOfThreeDigit:chip];
     else if(chip >= 10)
-        [self setChipViewOfTwoDigit:chip];
+        [self showChipViewOfTwoDigit:chip];
     else
-        [self setChipViewOfOneDigit:chip];
+        [self showChipViewOfOneDigit:chip];
 }
 
-- (void)setChipViewOfFiveDigit:(int)chip{
+- (void)showChipViewOfFiveDigit:(int)chip{
     int temp = chip;
     NSMutableArray *chipNumberView = [NSMutableArray array];
     for(int i = 0; i < 5; i++){
@@ -307,7 +307,7 @@ static int chip;
     chipNumberViews = [[NSArray alloc] initWithArray:chipNumberView];
 }
 
-- (void)setChipViewOfFourDigit:(int)chip{
+- (void)showChipViewOfFourDigit:(int)chip{
     int temp = chip;
     NSMutableArray *chipNumberView = [NSMutableArray array];
     for(int i = 0; i < 4; i++){
@@ -325,7 +325,7 @@ static int chip;
     chipNumberViews = [[NSArray alloc] initWithArray:chipNumberView];
 }
 
-- (void)setChipViewOfThreeDigit:(int)chip{
+- (void)showChipViewOfThreeDigit:(int)chip{
     int temp = chip;
     NSMutableArray *chipNumberView = [NSMutableArray array];
     for(int i = 0; i < 3; i++){
@@ -343,7 +343,7 @@ static int chip;
     chipNumberViews = [[NSArray alloc] initWithArray:chipNumberView];
 }
 
-- (void)setChipViewOfTwoDigit:(int)chip{
+- (void)showChipViewOfTwoDigit:(int)chip{
     int temp = chip;
     NSMutableArray *chipNumberView = [NSMutableArray array];
     for(int i = 0; i < 2; i++){
@@ -361,7 +361,7 @@ static int chip;
     chipNumberViews = [[NSArray alloc] initWithArray:chipNumberView];
 }
 
-- (void)setChipViewOfOneDigit:(int)chip{
+- (void)showChipViewOfOneDigit:(int)chip{
     int temp = chip;
     NSMutableArray *chipNumberView = [NSMutableArray array];
     
@@ -428,7 +428,7 @@ static int chip;
             [self presentViewController:alertController
                                animated:YES
                              completion:^{
-                                 [self setUpBtn];
+                                 [self showBtns];
                              }];
         } else {
             NCMBObject *object = objects[0];
@@ -448,10 +448,10 @@ static int chip;
                     [self presentViewController:alertController
                                        animated:YES
                                      completion:^{
-                                         [self setUpBtn];
+                                         [self showBtns];
                                      }];
                 } else {
-                    [self setUpBtn];
+                    [self showBtns];
                     if(arc4random_uniform(3) == 0)
                         [self.interstitial presentFromRootViewController:self];
                 }
