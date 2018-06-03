@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NCMB/NCMB.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +15,14 @@
 
 @implementation AppDelegate
 
+static NSString *appKey = @"7e2d976b0c2be7820dd9340d7e7424647af1b71bd0eb03cfaa102eaeb91413cb";
+static NSString * clientKey = @"5bd1495c9b637fc84636654635c771952af213a1d98ccb99bd129a73bb4aaba7";
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [NCMB setApplicationKey:appKey clientKey:clientKey];
+    
     return YES;
 }
 
@@ -30,11 +36,16 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    NSNotification* n = [NSNotification notificationWithName:@"enterBackground" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:n];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    NSNotification* n = [NSNotification notificationWithName:@"enterFromBackground" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:n];
 }
 
 
